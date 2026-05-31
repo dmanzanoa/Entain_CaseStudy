@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entain-bet-pipeline"
+version = "0.1.0"
+description = "Local batch validation and customer feature pipeline for betting data"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0",
+  "pyarrow>=14.0",
+]
+
+[project.scripts]
+bet-pipeline = "bet_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

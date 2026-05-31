@@ -1,0 +1,12 @@
+{
+  "failure_counts_by_rule": {
+    "betting_amount_gt_0": 835,
+    "payout_matches_contract": 3,
+    "price_gt_1": 5,
+    "return_for_entain_matches_contract": 29
+  },
+  "generated_at": "2026-05-28T10:39:13.365750+00:00",
+  "invalid_rows": 864,
+  "total_rows": 372296,
+  "valid_rows": 371432
+}
