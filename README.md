@@ -18,13 +18,24 @@ candidate_submission/
 
 ## Commands
 
-From local directory:
+The CLI accepts any CSV path through `--input`. The example commands below assume the repository is next to a `data/` folder that contains `bets.csv`:
+
+```text
+JobApplications/
+  data/
+    bets.csv
+  candidate_submission/
+```
+
+From the project directory:
 
 ```bash
 python -m pip install -e .
 bet-pipeline validate --input ../data/bets.csv --output outputs/validation/
 bet-pipeline build-features --input ../data/bets.csv --output outputs/features/
 ```
+
+If your file is somewhere else, replace `../data/bets.csv` with that path.
 
 Equivalent runnable modules:
 
