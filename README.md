@@ -21,7 +21,6 @@ candidate_submission/
 The CLI accepts any CSV path through `--input`. The example commands below assume the repository is next to a `data/` folder that contains `bets.csv`:
 
 ```text
-JobApplications/
   data/
     bets.csv
   candidate_submission/
