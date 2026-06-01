@@ -7,6 +7,7 @@ Batch oriented Python pipeline for the `bets.csv` data file. It validates raw be
 ```text
 candidate_submission/
   pyproject.toml
+  setup.py
   Dockerfile
   README.md
   src/bet_pipeline/
@@ -104,6 +105,15 @@ Or, without installing the package:
 ```bash
 PYTHONPATH=src python -m unittest discover -s tests
 ```
+
+If editable install fails in an older or offline Python environment, upgrade packaging tools first:
+
+```bash
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e .
+```
+
+If package installation is not possible, the pipeline can still be run with the module form shown above, as long as `pandas` and `pyarrow` are available in the Python environment.
 
 ## Design documents
 
