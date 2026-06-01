@@ -2,10 +2,53 @@
 
 Batch oriented Python pipeline for the `bets.csv` data file. It validates raw betting records, writes invalid records explicitly, and builds customer-level features from each customer's first 20 bets.
 
+## Quick start from a fresh clone
+
+Clone the repository and enter the project directory:
+
+```bash
+git clone https://github.com/dmanzanoa/Entain_CaseStudy.git
+cd Entain_CaseStudy
+```
+
+Place `bets.csv` in a `data/` folder next to the cloned repository, or use any other path with `--input`. The examples below assume this layout:
+
+```text
+  data/
+    bets.csv
+  Entain_CaseStudy/
+```
+
+Install the package, run tests, and execute both pipeline steps:
+
+```bash
+python -m pip install -e .
+python -m unittest discover -s tests
+bet-pipeline validate --input ../data/bets.csv --output outputs/validation/
+bet-pipeline build-features --input ../data/bets.csv --output outputs/features/
+```
+
+If your file is somewhere else, replace `../data/bets.csv` with that path.
+
+If editable install fails in an older or offline Python environment, upgrade packaging tools first:
+
+```bash
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e .
+```
+
+If package installation is not possible but `pandas` and `pyarrow` are already available, use the module form:
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests
+PYTHONPATH=src python -m bet_pipeline.cli validate --input ../data/bets.csv --output outputs/validation/
+PYTHONPATH=src python -m bet_pipeline.cli build-features --input ../data/bets.csv --output outputs/features/
+```
+
 ## Project shape
 
 ```text
-candidate_submission/
+Entain_CaseStudy/
   pyproject.toml
   setup.py
   Dockerfile
@@ -14,33 +57,6 @@ candidate_submission/
   tests/
   docs/
   outputs/
-```
-
-## Commands
-
-The CLI accepts any CSV path through `--input`. The example commands below assume the repository is next to a `data/` folder that contains `bets.csv`:
-
-```text
-  data/
-    bets.csv
-  candidate_submission/
-```
-
-From the project directory:
-
-```bash
-python -m pip install -e .
-bet-pipeline validate --input ../data/bets.csv --output outputs/validation/
-bet-pipeline build-features --input ../data/bets.csv --output outputs/features/
-```
-
-If your file is somewhere else, replace `../data/bets.csv` with that path.
-
-Equivalent runnable modules:
-
-```bash
-PYTHONPATH=src python -m bet_pipeline.cli validate --input ../data/bets.csv --output outputs/validation/
-PYTHONPATH=src python -m bet_pipeline.cli build-features --input ../data/bets.csv --output outputs/features/
 ```
 
 ## Docker
@@ -106,7 +122,6 @@ Feature columns:
 After installing the package:
 
 ```bash
-python -m pip install -e .
 python -m unittest discover -s tests
 ```
 
@@ -115,15 +130,6 @@ Or, without installing the package:
 ```bash
 PYTHONPATH=src python -m unittest discover -s tests
 ```
-
-If editable install fails in an older or offline Python environment, upgrade packaging tools first:
-
-```bash
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install -e .
-```
-
-If package installation is not possible, the pipeline can still be run with the module form shown above, as long as `pandas` and `pyarrow` are available in the Python environment.
 
 ## Design documents
 
